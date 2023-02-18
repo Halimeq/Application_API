@@ -8,8 +8,8 @@ import numpy as np
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-root = '/home/Halime/Application_API1/modelo_clase/'
-root_db = '/home/Halime/Application_API1/modelo_clase/'
+root = '/home/Halime/Application_API/modelo_clase/'
+root_db = '/home/Halime/Application_API/modelo_clase/'
 
 model = pickle.load(open(root + 'advertising.model', 'rb'))
 print(model.coef_)
@@ -26,7 +26,7 @@ def get_predict():
     crs = conn.cursor()
 
     # Get POST JSON data
-    data = request.get_json()
+    data = request.get_json(silent=True)
     if data == None:
         data = request.args
     tv = data.get("TV",0)
